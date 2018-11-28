@@ -14,5 +14,6 @@ RUN dotnet publish --configuration Release --output out
 FROM microsoft/dotnet:aspnetcore-runtime
 WORKDIR /app
 COPY --from=build-env /app/out .
+# Expose don't actually publish the port. It's just for documentation. This is the port I intend to publish
 EXPOSE 80
 ENTRYPOINT ["dotnet", "k8sfirstapp.dll"]

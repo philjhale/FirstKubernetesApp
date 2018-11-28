@@ -17,6 +17,6 @@ spec:
       containers:
       - name: k8sfirstapp
         image: k8sfirstapp:latest
-        imagePullPolicy: Never # don't pull from DockerHub
+        imagePullPolicy: Never # don't pull from DockerHub. Without this a the local Docker image won't be found
         ports:
         - containerPort: 80 # port exposed by container
