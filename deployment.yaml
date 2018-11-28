@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firstk8sapp-deployment
+  labels:
+    app: firstk8sapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: firstk8sapp
+  template:
+    metadata:
+      labels:
+        app: firstk8sapp
+    spec:
+      containers:
+      - name: k8sfirstapp
+        image: k8sfirstapp:latest
+        imagePullPolicy: Never # don't pull from DockerHub
+        ports:
+        - containerPort: 80 # port exposed by container
