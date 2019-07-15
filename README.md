@@ -27,12 +27,8 @@ Run the image. This maps port 80 in the container to 8080.
 
 Check it works by viewing in the browser. [http://localhost:8080/api/random](http://localhost:8080/api/random) 
 
-Create the Kubernetes [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+Create the Kubernetes [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) and [expose](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose) the app using a LoadBalancer [service](https://kubernetes.io/docs/concepts/services-networking/service/).
 
-```kubectl create -f deployment.yaml```
-
-[Expose](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose) the app using a LoadBalancer [service](https://kubernetes.io/docs/concepts/services-networking/service/).
-
-```kubectl create -f service.yaml```
+```kubectl apply -f k8s-spec.yaml```
 
 The API should be accessible in the browser. Fingers crossed. [http://localhost:4000/api/random](http://localhost:4000/api/random) 

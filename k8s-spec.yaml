@@ -20,3 +20,18 @@ spec:
         imagePullPolicy: Never # don't pull from DockerHub. Without this a the local Docker image won't be found
         ports:
         - containerPort: 80 # port exposed by container
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: firstk8sapp-service
+  labels:
+    app: firstk8sapp-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 4000 # load balancer port (i.e. the public port)
+    targetPort: 80 # connect to contains on this port
+    protocol: TCP
+  selector:
+    app: firstk8sapp # must point to pod label
